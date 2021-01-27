@@ -34,12 +34,13 @@ win:moveToUnit(hs.layout.right50)
 end)
 
 local applicationHotkeys = {  
-    i = 'Google Chrome Beta',
+    i = 'Google Chrome',
     t = 'Terminal',
     s = 'Safari',
     v = 'Visual Studio Code',
     z = "zoom.us",
-    h = "Horo"
+    h = "Horo",
+    k = "Kindle"
 }
 
 for key, app in pairs(applicationHotkeys) do  

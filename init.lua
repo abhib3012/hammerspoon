@@ -35,12 +35,13 @@ end)
 
 local applicationHotkeys = {  
     i = 'Google Chrome',
-    t = 'Terminal',
+    t = 'Hyper',
     s = 'Safari',
     v = 'Visual Studio Code',
     z = "zoom.us",
     h = "Horo",
-    k = "Kindle"
+    k = "Kindle",
+    o = "Microsoft OneNote"
 }
 
 for key, app in pairs(applicationHotkeys) do  
@@ -48,39 +49,3 @@ for key, app in pairs(applicationHotkeys) do
         hs.application.launchOrFocus(app)  
     end)
 end
-
-hs.loadSpoon("Zoom")
-spoon.Zoom:start()
-
--- This lets you click on the menu bar item to toggle the mute state
-zoomStatusMenuBarItem = hs.menubar.new(nil)
-zoomStatusMenuBarItem:setClickCallback(function()
-    spoon.Zoom:toggleMute()
-end)
-
-updateZoomStatus = function(event)
-  hs.printf("updateZoomStatus(%s)", event)
-  if (event == "from-running-to-meeting") then
-    zoomStatusMenuBarItem:returnToMenuBar()
-  elseif (event == "muted") then
-    zoomStatusMenuBarItem:setTitle("🔴")
-  elseif (event == "unmuted") then
-    zoomStatusMenuBarItem:setTitle("🟢")
-  elseif (event == "from-meeting-to-running") or (event == "from-running-to-closed") then
-    zoomStatusMenuBarItem:removeFromMenuBar()
-  end
-end
-
-hs.loadSpoon("Zoom")
-spoon.Zoom:setStatusCallback(updateZoomStatus)
-spoon.Zoom:start()
-
--- Next up:
--- https://github.com/adamyonk/PushToTalk.spoon/blob/master/init.lua
-hs.hotkey.bind(hyper, 'm', function()
-  spoon.Zoom:mute()
-end)
-
-hs.hotkey.bind(hyper, 'u', function()
-    spoon.Zoom:unmute()
-  end)

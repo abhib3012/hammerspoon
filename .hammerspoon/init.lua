@@ -35,7 +35,7 @@ end)
 
 local applicationHotkeys = {  
     i = 'Google Chrome',
-    t = 'Hyper',
+    t = 'TickTick',
     s = 'Safari',
     v = 'Visual Studio Code',
     z = "zoom.us",
